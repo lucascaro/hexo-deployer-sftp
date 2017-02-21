@@ -1,6 +1,6 @@
 {
   "name": "hexo-deployer-sftp",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "SFTP deployer for Hexo",
   "main": "index",
   "repository": {
