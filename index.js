@@ -16,6 +16,7 @@ hexo.extend.deployer.register('sftp', function(args, callback){
       '    passphrase: [passphrase] # Optional',
       '    agent: [path/to/agent/socket] # Optional, defaults to $SSH_AUTH_SOCK',
       '    remotePath: [remotePath] # Default is `/`',
+      '    forceUpload: [boolean] # default is false
       '',
       'For more help, you can check the docs: ' + 'http://hexo.io/docs/deployment.html'.underline
     ]
@@ -38,6 +39,7 @@ hexo.extend.deployer.register('sftp', function(args, callback){
 
   const options = {
     dryRun: !!args.dryrun,
+    forceUpload: args.forceUpload,
     // exclude: [                      // exclude patterns (glob)
     //   'node_modules',
     //   'src/**/*.spec.ts'
