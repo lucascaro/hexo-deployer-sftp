@@ -1,6 +1,6 @@
 {
   "name": "hexo-deployer-sftp",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "SFTP deployer for Hexo",
   "main": "index",
   "repository": {
@@ -20,6 +20,6 @@
   "author": "Lucas Caro <lucascaro@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "sftp-sync-deploy": "^0.5.0"
+    "sftp-sync-deploy": "^0.7.1"
   }
 }
