@@ -1,4 +1,4 @@
-const deploy = require("sftp-sync-deploy");
+const { deploy } = require('sftp-sync-deploy');
 
 hexo.extend.deployer.register("sftp", function(args, callback) {
   if (!args.host || !args.user) {
@@ -26,7 +26,7 @@ hexo.extend.deployer.register("sftp", function(args, callback) {
     return callback();
   }
 
-  const config = {
+  let config = {
     host: args.host,
     port: args.port || 22,
     username: args.user,
@@ -38,20 +38,19 @@ hexo.extend.deployer.register("sftp", function(args, callback) {
     remoteDir: args.remotePath || "/"
   };
 
-  const options = {
-    dryRun: !!args.dryrun,
-    forceUpload: args.forceUpload
+  let options = {
+    dryRun: false,
+    forceUpload: args.forceUpload,
+    excludeMode: 'remove',
+    concurrency: 100
     // exclude: [                      // exclude patterns (glob)
     //   'node_modules',
     //   'src/**/*.spec.ts'
     // ]
   };
 
-  deploy(config, options)
-    .then(() => {
-      callback();
-    })
-    .catch(err => {
-      callback(err);
-    });
+deploy(config, options).then(() => {
+  console.log('Deployed!');
+}).catch(err => {
+  console.error('error! ', err);
 });
