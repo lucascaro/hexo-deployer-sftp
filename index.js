@@ -38,7 +38,7 @@ hexo.extend.deployer.register("sftp", function(args, callback) {
     remoteDir: args.remotePath || "/"
   };
 
-  let options = {
+  const options = {
     dryRun: false,
     forceUpload: args.forceUpload,
     excludeMode: 'remove',
