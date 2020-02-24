@@ -1,28 +1,29 @@
-const deploy = require('sftp-sync-deploy')
+const deploy = require("sftp-sync-deploy");
 
-hexo.extend.deployer.register('sftp', function(args, callback){
-  if (!args.host || !args.user){
+hexo.extend.deployer.register("sftp", function(args, callback) {
+  if (!args.host || !args.user) {
     const help = [
-      'You should argsure deployment settings in _config.yml first!',
-      '',
-      'Example:',
-      '  deploy:',
-      '    type: sftp',
-      '    host: <host>',
-      '    port: [port] # Default is 21',
-      '    user: <user>',
-      '    pass: <pass> # leave blank for paswordless connections',
-      '    privateKey: [path/to/privateKey] # Optional',
-      '    passphrase: [passphrase] # Optional',
-      '    agent: [path/to/agent/socket] # Optional, defaults to $SSH_AUTH_SOCK',
-      '    remotePath: [remotePath] # Default is `/`',
-      '    forceUpload: [boolean] # default is false
-      '',
-      'For more help, you can check the docs: ' + 'http://hexo.io/docs/deployment.html'.underline
-    ]
+      "You should argsure deployment settings in _config.yml first!",
+      "",
+      "Example:",
+      "  deploy:",
+      "    type: sftp",
+      "    host: <host>",
+      "    port: [port] # Default is 21",
+      "    user: <user>",
+      "    pass: <pass> # leave blank for paswordless connections",
+      "    privateKey: [path/to/privateKey] # Optional",
+      "    passphrase: [passphrase] # Optional",
+      "    agent: [path/to/agent/socket] # Optional, defaults to $SSH_AUTH_SOCK",
+      "    remotePath: [remotePath] # Default is `/`",
+      "    forceUpload: [boolean] # default is false",
+      "",
+      "For more help, you can check the docs: " +
+        "https://hexo.io/docs/one-command-deployment".underline
+    ];
 
-    console.log(help.join('\n'))
-    return callback()
+    console.log(help.join("\n"));
+    return callback();
   }
 
   const config = {
@@ -34,21 +35,23 @@ hexo.extend.deployer.register('sftp', function(args, callback){
     passphrase: args.passphrase,
     agent: args.agent || process.env.SSH_AUTH_SOCK,
     localDir: hexo.public_dir,
-    remoteDir: args.remotePath || '/'
-  }
+    remoteDir: args.remotePath || "/"
+  };
 
   const options = {
     dryRun: !!args.dryrun,
-    forceUpload: args.forceUpload,
+    forceUpload: args.forceUpload
     // exclude: [                      // exclude patterns (glob)
     //   'node_modules',
     //   'src/**/*.spec.ts'
     // ]
-  }
+  };
 
-  deploy(config, options).then(() => {
-    callback()
-  }).catch(err => {
-    callback(err)
-  })
-})
+  deploy(config, options)
+    .then(() => {
+      callback();
+    })
+    .catch(err => {
+      callback(err);
+    });
+});
