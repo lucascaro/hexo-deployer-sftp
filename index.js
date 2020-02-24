@@ -26,7 +26,7 @@ hexo.extend.deployer.register("sftp", function(args, callback) {
     return callback();
   }
 
-  let config = {
+  const config = {
     host: args.host,
     port: args.port || 22,
     username: args.user,
