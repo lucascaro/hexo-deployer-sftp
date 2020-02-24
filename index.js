@@ -1,4 +1,4 @@
-const { deploy } = require('sftp-sync-deploy');
+const { deploy } = require("sftp-sync-deploy");
 
 hexo.extend.deployer.register("sftp", function(args, callback) {
   if (!args.host || !args.user) {
@@ -19,7 +19,7 @@ hexo.extend.deployer.register("sftp", function(args, callback) {
       "    forceUpload: [boolean] # default is false",
       "",
       "For more help, you can check the docs: " +
-        "https://hexo.io/docs/one-command-deployment".underline
+        "https://hexo.io/docs/one-command-deployment"
     ];
 
     console.log(help.join("\n"));
@@ -41,7 +41,7 @@ hexo.extend.deployer.register("sftp", function(args, callback) {
   const options = {
     dryRun: !!args.dryrun,
     forceUpload: args.forceUpload,
-    excludeMode: 'remove',
+    excludeMode: "remove",
     concurrency: 100
     // exclude: [                      // exclude patterns (glob)
     //   'node_modules',
@@ -49,9 +49,11 @@ hexo.extend.deployer.register("sftp", function(args, callback) {
     // ]
   };
 
-  deploy(config, options).then(() => {
-    callback();
-  }).catch(err => {
-    callback(err);
-  });
+  deploy(config, options)
+    .then(() => {
+      callback();
+    })
+    .catch(err => {
+      callback(err);
+    });
 });
