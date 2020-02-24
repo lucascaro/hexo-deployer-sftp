@@ -39,7 +39,7 @@ hexo.extend.deployer.register("sftp", function(args, callback) {
   };
 
   const options = {
-    dryRun: false,
+    dryRun: !!args.dryrun,
     forceUpload: args.forceUpload,
     excludeMode: 'remove',
     concurrency: 100
