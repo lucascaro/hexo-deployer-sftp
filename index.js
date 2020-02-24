@@ -52,6 +52,6 @@ hexo.extend.deployer.register("sftp", function(args, callback) {
   deploy(config, options).then(() => {
     callback();
   }).catch(err => {
-    console.error('error! ', err);
+    callback(err);
   });
 });
