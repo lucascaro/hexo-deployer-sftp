@@ -20,6 +20,9 @@
   "author": "Lucas Caro <lucascaro@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "sftp-sync-deploy": "^0.7.1"
+    "sftp-sync-deploy": "^0.8.0"
+  },
+  "devDependencies": {
+    "@types/hexo": "^3.8.3"
   }
 }
