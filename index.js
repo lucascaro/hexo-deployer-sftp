@@ -45,13 +45,13 @@ hexo.extend.deployer.register("sftp", function(args) {
     dryRun: !!args.dryrun,
     forceUpload: args.forceUpload,
     excludeMode: "remove",
-    concurrency: 100,
+    concurrency: args.concurrency || 100,
     // exclude patterns (glob)
     // exclude: [
     //   'node_modules',
     //   'src/**/*.spec.ts'
     // ]
   };
-
+  console.log("Deploying with configuration: ", options);
   return sftp.deploy(config, options);
 });
